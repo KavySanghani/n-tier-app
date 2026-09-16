@@ -1,0 +1,14 @@
+# Node dependencies
+frontend/node_modules/
+frontend/dist/
+
+# Python cache and environments
+__pycache__/
+*.pyc
+.env
+venv/
+env/
+
+# Database files
+*.db
+*.sqlite3
