@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 
 from data.models import Book
@@ -7,6 +8,14 @@ from business.book_manager import BookManager, ValidationError, CheckoutError, N
 
 # Setup and Injection
 app = FastAPI(title="Library Management API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 repository = SQLiteBookRepository("library.db")
 book_manager = BookManager(repository)
 
